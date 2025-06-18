@@ -1,23 +1,22 @@
 {
-  "name": "GMT - (Get My Time)",
-  "version": "1.0",
+  "name": "GMT - Get My Time",
+  "description": "Convert selected time string to your local time",
+  "version": "1.0.0",
   "manifest_version": 3,
-  "description": "選取日期時間並轉換成您的本地時間",
-  "permissions": [
-    "contextMenus",
-    "activeTab",
-    "scripting"
-  ],
+
+  "permissions": ["contextMenus", "activeTab", "scripting"],
+  "host_permissions": ["<all_urls>"],
+
   "background": {
     "service_worker": "background.js"
   },
-  "action": {
-    "default_title": "GMT - (Get My Time)"
-  },
+
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["content.js"]
+      "js": ["chrono.min.js", "content.js"],
+      "type": "module",
+      "run_at": "document_idle"
     }
   ]
 }
